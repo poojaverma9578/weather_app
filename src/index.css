@@ -1,13 +1,270 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@keyframes fade{
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-15px);
+  }
+
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+body {
+  font-family: "Fredoka", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+  background-color: #D1CFCF;
+}
+
+.welcome {
+  height: 100vh;
+  width: 100vw;
+  background-color: orange;
+  position: absolute;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fade 5s ease-in-out forwards;
+  top: 0;
+  z-index: 1;
+}
+
+.Main{
+  background-color: palegoldenrod;
+  width: 80%;
+  height: 70vh;
+  margin: 15vh auto;
+  position: relative;
+}
+
+.left{
+  position: absolute;
+  width: 40%;
+  height: 70vh;
+  background-color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 2px;
+}
+
+#info_p{
+  font-size: 15px;
+}
+
+#text_p{
+  font-size: 25px;
+}
+
+#temp_p{
+  font-size: 40px;
+}
+
+#city_p{
+  font-size:30px;
+}
+
+.right{
+  position: absolute;
+  background-color: #EFEFEF;
+  right: 0;
+  width: 60%;
+  height: 70vh;
+  letter-spacing: 2px;
+  overflow: auto;
+}
+
+.datacols{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  position: absolute;
+  width: 100%;
+}
+
+.datacols div {
+  border: 1px solid #e7e7e7;
+  background-color: #748BF1;
+  border-radius: 10px;
+  cursor: pointer;
+  padding-left: 20px;
+  margin: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.datacols div span{
+  padding: 10px 0px;
+}
+
+#text_d,#others_d{
+  font-size: 18px;
+}
+
+#value_d{
+  font-size: 25px;
+}
+
+.data_graph{
+  position: absolute;
+  width: 100%;
+}
+
+.sun{
+  text-align: center;
+  margin: 20px;
+}
+.sun span{
+  padding: 25px;
+}
+
+.btn{
+  width: 100%;
+  height: 7.3vh;
+  background-color: #748BF1;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+}
+
+.days ul{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 8%;
+}
+
+.days li{
+  cursor: pointer;
+  width: 130px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.days li:hover,.selected{
+  border-bottom: 2px solid black;
+}
+.selected{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.dropdown_content ul{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+  background-color: #748BF1;
+}
+
+.dropdown_content li:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#drop_down {
+  display: inline-block;
+}
+
+.dropdown_content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+}
+
+#drop_down:hover .dropdown_content {
+  display: block;
+  z-index: 1;
+}
+
+.more:hover {
+  background-color: #023047;
+}
+
+.searchbar{
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 70%;
+  margin-top: 20px;
+  border-radius: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: auto;
+}
+
+.search{
+  background: transparent;
+  outline: none;
+  border: none;
+}
+
+.searchbar button{
+  border: 0;
+  border-radius: 50%;
+  right: 20px;
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  top: 7.5px;
+}
+
+.load{
+  background-color: #e7e7e7;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 50px;
+}
+
+#load1,#load2,#load3{
+  animation: bounce 0.8s infinite;
+}
+
+#load1 {
+  animation-delay: 0s;
+}
+
+#load2 {
+  animation-delay: 0.2s;
+}
+
+#load3 {
+  animation-delay: 0.4s;
+}
+.load{
+  display: flex;
+  flex-direction: row;
 }
